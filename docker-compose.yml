@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: manage-backend
+    ports:
+      - "9095:9095"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgres://postgres:9871/manage
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: manage
+      SPRING_PORT: 4510
+  postgres:
+    image: postgres:latest
+    container_name: manage-postgres
+    ports:
+      - "9871:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "manage"
+      POSTGRES_DB: "manage"

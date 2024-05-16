@@ -1,0 +1,41 @@
+spring:
+  application:
+    name:
+      manage
+  datasource:
+    url: ${SPRING_DATASOURCE_URL :jdbc:postgresql://localhost:9871/manage}
+    username: ${SPRING_DATASOURCE_USERNAME :postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD :manage}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:db/changelog/main-changelog.xml
+    enabled: false
+
+server:
+  port: ${SPRING_PORT :1239}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
+logging:
+  level:
+    com:
+      baeldung:
+        cloud:
+          openfeign:
+            client: DEBUG
