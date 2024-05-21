@@ -5,8 +5,21 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="v1-1" author="Bekzhan">
-        <createTable tableName="">
-            <column></column>
+        <createTable tableName="users">
+            <column name="userid" type="varchar(50)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="phonenumber" type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="scores" type="bigint"/>
+        </createTable>
+        <createTable tableName="contacts">
+            <column name="user_contact" type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="saved_name" type="varchar(50)"/>
+            <column name="is_hidden" type="boolean" defaultValue="false"/>
         </createTable>
     </changeSet>
 

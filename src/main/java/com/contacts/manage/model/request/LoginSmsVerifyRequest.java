@@ -1,6 +1,6 @@
 package com.contacts.manage.model.request;
 
-public record LoginSmsVerify(
+public record LoginSmsVerifyRequest(
         String code,
         String user_id
 ) {

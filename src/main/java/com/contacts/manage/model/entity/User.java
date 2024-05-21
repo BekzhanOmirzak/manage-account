@@ -1,7 +1,7 @@
 package com.contacts.manage.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,16 +12,16 @@ import java.util.List;
 
 @Entity
 @Builder
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
 
-    private String user_id;
-    private String phone_number;
-    private String password;
+    @Id
+    private String userid;
+    private String phonenumber;
+    private int scores;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -35,7 +35,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return userid;
     }
 
     @Override
@@ -57,4 +57,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
