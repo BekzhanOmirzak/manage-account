@@ -16,10 +16,11 @@
         </createTable>
         <createTable tableName="contacts">
             <column name="user_contact" type="varchar(50)">
-                <constraints unique="true"/>
+                <constraints primaryKey="true"/>
             </column>
             <column name="saved_name" type="varchar(50)"/>
             <column name="is_hidden" type="boolean" defaultValue="false"/>
+            <column name="user_id" type="varchar(50)"/>
         </createTable>
     </changeSet>
 

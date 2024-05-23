@@ -35,11 +35,12 @@ public class AuthService implements IAuthService {
 
     @Override
     public ResponseEntity<AuthResponse> authRequest(AuthRequest authRequest) {
-        var existUser = userRepository.findByPhonenumber(authRequest.phoneNumber());
+        var trimPhoneNumber = authRequest.phoneNumber();
+        var existUser = userRepository.findByPhonenumber(trimPhoneNumber);
         String userID;
         if (existUser.isEmpty()) {
             userID = UUID.randomUUID().toString();
-            userRepository.save(User.builder().userid(userID).phonenumber(authRequest.phoneNumber()).build());
+            userRepository.save(User.builder().userid(userID).phonenumber(trimPhoneNumber).build());
         } else {
             userID = existUser.get().getUserid();
         }

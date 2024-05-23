@@ -4,8 +4,13 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <include file="v1/accumulate-changelog.xml" relativeToChangelogFile="true"/>
-    <include file="v2/accumulate-changelog.xml" relativeToChangelogFile="true"/>
-    <include file="v3/v3-add-column.xml" relativeToChangelogFile="true"/>
+    <changeSet id="v2-2" author="Bekzhan">
+        <addForeignKeyConstraint
+                baseTableName="contacts"
+                baseColumnNames="user_id"
+                constraintName="fk_contact_to_user"
+                referencedTableName="users"
+                referencedColumnNames="userid"/>
+    </changeSet>
 
 </databaseChangeLog>

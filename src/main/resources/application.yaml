@@ -22,7 +22,7 @@ spring:
     enabled: true
 
 server:
-  port: ${SPRING_PORT :1241}
+  port: ${SPRING_PORT :1243}
 
 feign:
   client:
@@ -42,5 +42,5 @@ logging:
 
 jwt:
   secret: ${JWT_SECRET :844c1a09b1e84fb767916edce5f6fbad1401c588a0f10fb7de79c245324c4d7d3e6c62b5aec4a168cc14f957946ced574ad38cb6b44d732641f307158afd19fb}
-  access: 20
+  access: 86400
   refresh: 86400

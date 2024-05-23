@@ -1,6 +1,7 @@
 package com.contacts.manage.controller;
 
 import com.contacts.manage.model.request.ContactItemRequest;
+import com.contacts.manage.model.response.ContactResponse;
 import com.contacts.manage.service.IContactService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,18 +15,27 @@ public class ContactController {
 
     private final IContactService iContactService;
 
-    @GetMapping("/names/saved")
+    @GetMapping("/my-names-saved")
     public ResponseEntity<List<String>> savedMyNameByOthers(
             @RequestHeader(name = "Authorization") String token
     ) {
-        return iContactService.retrieveMyNamesSavedList(token);
+        return iContactService.distinctNamesSavedByOthers(token);
     }
 
-    @PostMapping("/savemycontacts")
-    public ResponseEntity<Void> savedMyContacts(
-            @RequestHeader(name = "Authorization") String jwtToken,
+    @PostMapping("/save-contacts")
+    public void saveMyContacts(
+            @RequestHeader(name = "Authorization") String token,
             @RequestBody List<ContactItemRequest> contactList
     ) {
-        return iContactService.saveMyContactsList(jwtToken, contactList);
+        iContactService.saveMyContactsList(token, contactList);
     }
+
+    @GetMapping("/contacts-by-name/{name}")
+    public ResponseEntity<List<ContactResponse>> getContactListByName(
+            @RequestHeader(name = "Authorization") String jwt,
+            @PathVariable("name") String name
+    ) {
+        return iContactService.getContactListByName(jwt, name);
+    }
+
 }

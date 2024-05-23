@@ -1,10 +1,7 @@
 package com.contacts.manage.model.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,4 +21,10 @@ public class ContactItem {
     private String savedName;
     @Column(name = "is_hidden")
     private boolean isHidden;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }

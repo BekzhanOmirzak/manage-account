@@ -1,14 +1,18 @@
 package com.contacts.manage.service;
 
 import com.contacts.manage.model.request.ContactItemRequest;
+import com.contacts.manage.model.response.ContactResponse;
+import feign.Response;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface IContactService {
 
-    ResponseEntity<List<String>> retrieveMyNamesSavedList(String jwt);
+    ResponseEntity<List<String>> distinctNamesSavedByOthers(String jwt);
 
-    ResponseEntity<Void> saveMyContactsList(String jwtToken, List<ContactItemRequest> contactList);
+    void saveMyContactsList(String jwtToken, List<ContactItemRequest> contactList);
+
+    ResponseEntity<List<ContactResponse>> getContactListByName(String jwt, String name);
 
 }
