@@ -15,6 +15,12 @@ public interface ContactRepository extends JpaRepository<ContactItem, String> {
     List<String> getContactNamesSavedDistinctlyByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 
     @Query(value = "SELECT * FROM contacts WHERE saved_name=:name AND user_contact LIKE :phone_number%", nativeQuery = true)
-    List<ContactItem> getContactsBySavedName(@Param("name") String name, @Param("phone_number") String phone_number);
+    List<ContactItem> getContactsBySavedNamePhoneNumber(@Param("name") String name, @Param("phone_number") String phone_number);
+
+    @Query(value = "SELECT * FROM contacts WHERE saved_name=:name AND user_id=:user_id", nativeQuery = true)
+    List<ContactItem> getContactsBySavedNameUserId(@Param("name") String name, @Param("user_id") String user_id);
+
+    @Query(value = "UPDATE contacts SET isHidden=:isHidden WHERE user_id=:user_id AND phone_number=:phone_number", nativeQuery = true)
+    void updateContactIsHiddenByUserId(@Param("isHidden") boolean isHidden, @Param("user_id") String user_id, @Param("phone_number") String phone_number);
 
 }

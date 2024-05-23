@@ -1,6 +1,7 @@
 package com.contacts.manage.controller;
 
 import com.contacts.manage.model.request.ContactItemRequest;
+import com.contacts.manage.model.request.ShowContactRequest;
 import com.contacts.manage.model.response.ContactResponse;
 import com.contacts.manage.service.IContactService;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,13 @@ public class ContactController {
             @PathVariable("name") String name
     ) {
         return iContactService.getContactListByName(jwt, name);
+    }
+
+    @PostMapping("/show-contact-name")
+    public void makeContactVisible(
+            @RequestHeader(name = "Authorization") String jwt,
+            @RequestBody ShowContactRequest showRequest) {
+        iContactService.makeContactVisible(jwt, showRequest);
     }
 
 }
