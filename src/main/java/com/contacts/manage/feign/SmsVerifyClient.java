@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(
         value = "sms-verify-api",
-        url = "http://localhost:1240/v1"
+        url = "http://localhost:9091/v1"
 )
 public interface SmsVerifyClient {
 

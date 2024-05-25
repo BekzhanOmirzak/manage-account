@@ -29,7 +29,7 @@ public class AuthController {
         return authService.authRequest(authRequest);
     }
 
-    @PostMapping("/auth_verify")
+    @PostMapping("/auth-verify")
     public ResponseEntity<VerifyResponse> authWithSmsCode(
             @RequestBody LoginSmsVerifyRequest loginSmsVerify) {
         return authService.loginSmsVerification(loginSmsVerify);
