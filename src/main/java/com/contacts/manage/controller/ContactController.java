@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/contacts")
 public class ContactController {
 
     private final IContactService iContactService;
@@ -44,6 +45,11 @@ public class ContactController {
             @RequestHeader(name = "Authorization") String jwt,
             @RequestBody ShowContactRequest showRequest) {
         iContactService.makeContactVisible(jwt, showRequest);
+    }
+
+    @GetMapping("/testing")
+    public String testing() {
+        return "testing";
     }
 
 }

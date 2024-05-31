@@ -23,8 +23,6 @@ public class ContactItem {
     private boolean isHidden;
     @Column(name = "phone_number")
     private String phoneNumber;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "user_id")
+    private String userId;
 }

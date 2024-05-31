@@ -7,10 +7,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class ManageApplication {
+public class ContactApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ManageApplication.class, args);
+        SpringApplication.run(ContactApplication.class, args);
     }
 
 }

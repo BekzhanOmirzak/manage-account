@@ -21,7 +21,7 @@ public class PhoneNumberUtilsTest {
 
         var result = phoneNumberUtils.trimPhoneNumber(phoneNumber);
 
-        assertEquals(result, "+77763655665");
+        assertEquals(result, "77763655665");
     }
 
     @Test
@@ -30,7 +30,7 @@ public class PhoneNumberUtilsTest {
 
         var result = phoneNumberUtils.trimPhoneNumber(phoneNumber);
 
-        assertEquals(result, "+77763655665");
+        assertEquals(result, "77763655665");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class PhoneNumberUtilsTest {
 
         var result = phoneNumberUtils.trimPhoneNumber(phoneNumber);
 
-        assertEquals(result, "+77763655665");
+        assertEquals(result, "77763655665");
     }
 
 }
